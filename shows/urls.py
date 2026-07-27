@@ -1,7 +1,10 @@
-from django.urls import path
-from .views import SessionListCreateView, SessionRetrieveUpdateDestroyView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import SessionViewSet
+
+router = DefaultRouter()
+router.register(r'', SessionViewSet, basename='session')
 
 urlpatterns = [
-    path('', SessionListCreateView.as_view(), name='session-list'),
-    path('<int:pk>/', SessionRetrieveUpdateDestroyView.as_view(), name='session-detail'),
+    path('', include(router.urls)),
 ]
