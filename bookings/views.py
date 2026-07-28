@@ -16,6 +16,10 @@ class BookingListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         session_id = self.request.data.get('session')
         seat_id = self.request.data.get('seat')
+
+        if not session_id or not seat_id:
+            raise serializers.ValidationError("Необходимо указать session и seat")
+
         session = get_object_or_404(Session, id=session_id)
         seat = get_object_or_404(Seat, id=seat_id)
 

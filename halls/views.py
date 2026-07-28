@@ -7,9 +7,19 @@ from users.permissions import IsAdminUser
 class HallListCreateView(generics.ListCreateAPIView):
     queryset = Hall.objects.all()
     serializer_class = HallSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            return [IsAdminUser()]
+        return super().get_permissions()
 
 class HallRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Hall.objects.all()
     serializer_class = HallSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_permissions(self):
+        if self.request.method in ['PUT', 'PATCH', 'DELETE']:
+            return [IsAdminUser()]
+        return super().get_permissions()

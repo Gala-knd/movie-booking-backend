@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 from users.models import User
 from shows.models import Session
 from halls.models import Seat
@@ -17,6 +19,16 @@ class Booking(models.Model):
 
     class Meta:
         unique_together = ('session', 'seat')
+
+    def clean(self):
+        if self.session.start_time < timezone.now():
+            raise ValidationError('Нельзя бронировать билеты на прошедший сеанс')
+        if not self.session.hall.is_active:
+            raise ValidationError('Продажа билетов на этот сеанс временно закрыта')
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.session} - {self.seat}"

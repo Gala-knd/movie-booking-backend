@@ -1,8 +1,8 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
 from .models import Session
 from .serializers import SessionSerializer
 from halls.models import Seat
@@ -13,6 +13,13 @@ class SessionViewSet(viewsets.ModelViewSet):
     queryset = Session.objects.all()
     serializer_class = SessionSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = Session.objects.all()
+        movie_id = self.request.query_params.get('movie')
+        if movie_id:
+            queryset = queryset.filter(movie_id=movie_id)
+        return queryset
 
     def get_permissions(self):
         if self.request.method in ['POST', 'PUT', 'PATCH', 'DELETE']:
