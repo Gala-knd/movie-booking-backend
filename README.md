@@ -56,48 +56,19 @@ movie-booking-backend/
 
 ## 🚀 Инструкция по развёртыванию и запуску (локально)
 
+
+---
+
+## 🚀 Инструкция по развёртыванию и запуску (локально)
+
 ### Шаг 1: Клонирование репозитория
 ```bash
-git clone https://github.com/Gala-knd/movie-booking-backend.git
-cd movie-booking-backend
+git clone https://github.com/Gala-knd/movie-booking-frontend.git
+cd movie-booking-frontend
+---
 ### Шаг 2: Создание и активация виртуального окружения
-Для Windows (Git Bash):
+
+**Для Windows (Git Bash):**
 ```bash
 python -m venv venv
-source venv/Scripts/activate
-Для Mac / Linux:
-```bash
-python3 -m venv venv
-source venv/bin/activate
-### Шаг 3: Установка зависимостей
-```bash
-pip install -r requirements.txt
-### Шаг 4: Настройка базы данных PostgreSQL
-Убедитесь, что PostgreSQL установлен и запущен.
-
-Создайте базу данных:
-
-```sql
-CREATE DATABASE movie_booking_db;
-В файле config/settings.py укажите свои данные:
-
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'movie_booking_db',
-        'USER': 'postgres',
-        'PASSWORD': 'ваш_пароль',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-### Шаг 5: Применение миграций и создание суперпользователя
-```bash
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
-### Шаг 6: Запуск сервера
-```bash
-python manage.py runserver
-Сервер будет доступен по адресу http://127.0.0.1:8000/.
+source venv/Scripts/activate--
