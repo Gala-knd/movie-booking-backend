@@ -51,12 +51,6 @@ movie-booking-backend/
 ├── requirements.txt # Список всех необходимых Python-пакетов
 ├── manage.py # Управляющий скрипт Django
 └── README.md # Документация проекта
-
----
-
-## 🚀 Инструкция по развёртыванию и запуску (локально)
-
-
 ---
 
 ## 🚀 Инструкция по развёртыванию и запуску (локально)
@@ -66,7 +60,7 @@ movie-booking-backend/
 git clone https://github.com/Gala-knd/movie-booking-frontend.git
 cd movie-booking-frontend
 ---
-### Шаг 2: Создание и активация виртуального окружения
+Шаг 2: Создание и активация виртуального окружения
 
 **Для Windows (Git Bash):**
 ```bash
