@@ -61,6 +61,9 @@ text
 ```bash
 git clone https://github.com/Gala-knd/movie-booking-backend.git
 cd movie-booking-backend
+
+---
+
 Шаг 2: Создание и активация виртуального окружения
 Для Windows (Git Bash):
 
