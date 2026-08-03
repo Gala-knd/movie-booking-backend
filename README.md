@@ -61,6 +61,7 @@ text
 ```bash
 git clone https://github.com/Gala-knd/movie-booking-backend.git
 cd movie-booking-backend
+```
 
 ---
 
