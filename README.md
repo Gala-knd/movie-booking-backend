@@ -64,30 +64,45 @@ cd movie-booking-backend
 
 ---
 
-Шаг 2: Создание и активация виртуального окружения
-Для Windows (Git Bash):
+### Шаг 2: Создание и активация виртуального окружения
 
-bash
+**Для Windows (Git Bash):**
+
+```bash
 python -m venv venv
 source venv/Scripts/activate
-Для Mac / Linux:
+```
 
-bash
+**Для Mac / Linux:**
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
-Шаг 3: Установка зависимостей
-bash
+```
+
+---
+
+### Шаг 3: Установка зависимостей
+
+```bash
 pip install -r requirements.txt
-Шаг 4: Настройка базы данных PostgreSQL
+```
+
+---
+
+### Шаг 4: Настройка базы данных PostgreSQL
+
 Убедитесь, что PostgreSQL установлен и запущен.
 
-Создайте базу данных:
+**Создайте базу данных:**
 
-sql
+```sql
 CREATE DATABASE movie_booking_db;
-В файле config/settings.py укажите свои данные:
+```
 
-python
+**В файле `config/settings.py` укажите свои данные:**
+
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -98,38 +113,64 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-Шаг 5: Применение миграций и создание суперпользователя
-bash
+```
+
+---
+
+### Шаг 5: Применение миграций и создание суперпользователя
+
+```bash
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
-Шаг 6: Запуск сервера
-bash
+```
+
+---
+
+### Шаг 6: Запуск сервера
+
+```bash
 python manage.py runserver
-Сервер будет доступен по адресу http://127.0.0.1:8000/.
+```
 
-🌐 API Эндпоинты
-Метод	Эндпоинт	Описание
-GET	/api/movies/	Список всех фильмов
-GET	/api/movies/{id}/	Детали фильма и его сеансы
-GET	/api/sessions/	Список всех сеансов
-GET	/api/sessions/{id}/seats/	Схема зала для конкретного сеанса
-POST	/api/bookings/	Создать новое бронирование
-GET	/api/bookings/	Список броней текущего пользователя
-POST	/api/users/register/	Зарегистрировать нового пользователя
-POST	/api/users/login/	Войти в систему (получить JWT-токен)
-👤 Роли и права доступа
-Администратор (admin):
+Сервер будет доступен по адресу:
 
-Имеет полный доступ через Django Admin (/admin).
+```text
+http://127.0.0.1:8000/
+```
 
-Может управлять (создавать, редактировать, удалять) фильмами, залами, сеансами и ценами через API или админ-панель.
+---
 
-Пользователь (user):
+# 🌐 API Эндпоинты
 
-Может просматривать фильмы и расписание.
+| Метод | Эндпоинт | Описание |
+|--------|----------|----------|
+| GET | `/api/movies/` | Список всех фильмов |
+| GET | `/api/movies/{id}/` | Детали фильма и его сеансы |
+| GET | `/api/sessions/` | Список всех сеансов |
+| GET | `/api/sessions/{id}/seats/` | Схема зала для конкретного сеанса |
+| POST | `/api/bookings/` | Создать новое бронирование |
+| GET | `/api/bookings/` | Список броней текущего пользователя |
+| POST | `/api/users/register/` | Зарегистрировать нового пользователя |
+| POST | `/api/users/login/` | Войти в систему (получить JWT-токен) |
 
-Может бронировать билеты и просматривать свои бронирования.
+---
 
-📎 Ссылки
-Фронтенд проекта: https://github.com/Gala-knd/movie-booking-frontend
+# 👤 Роли и права доступа
+
+## Администратор (`admin`)
+
+- Имеет полный доступ через Django Admin (`/admin`).
+- Может управлять (создавать, редактировать, удалять) фильмами, залами, сеансами и ценами через API или админ-панель.
+
+## Пользователь (`user`)
+
+- Может просматривать фильмы и расписание.
+- Может бронировать билеты и просматривать свои бронирования.
+
+---
+
+# 📎 Ссылки
+
+**Фронтенд проекта:**  
+[Movie Booking Frontend](https://github.com/Gala-knd/movie-booking-frontend)
