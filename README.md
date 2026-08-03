@@ -73,6 +73,8 @@ python -m venv venv
 source venv/Scripts/activate
 ```
 
+---
+
 **Для Mac / Linux:**
 
 ```bash
